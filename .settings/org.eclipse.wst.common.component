@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="FHORACLE3">
+        <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/开发说明文档"/>
+        <property name="java-output-path" value="/FHORACLE3/WebRoot/WEB-INF/classes"/>
+        <property name="context-root" value="/wzhuan"/>
+    </wb-module>
+</project-modules>

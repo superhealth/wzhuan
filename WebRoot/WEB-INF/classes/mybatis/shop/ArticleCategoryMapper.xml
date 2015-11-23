@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ArticleCategoryMapper">
+	
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into BB_6_ARTICLECATEGORY(
+			CREATE_DATE,	
+			MODIFY_DATE,	
+			ORDERS,	
+			GRADE,	
+			NAME,	
+			SEO_DESCRIPTION,	
+			SEO_KEYWORDS,	
+			SEO_TITLE,	
+			TREE_PATH,	
+			PARENT,	
+			ARTICLECATEGORY_ID
+		) values (
+			#{CREATE_DATE},	
+			#{MODIFY_DATE},	
+			#{ORDERS},	
+			#{GRADE},	
+			#{NAME},	
+			#{SEO_DESCRIPTION},	
+			#{SEO_KEYWORDS},	
+			#{SEO_TITLE},	
+			#{TREE_PATH},	
+			#{PARENT},	
+			#{ARTICLECATEGORY_ID}
+		)
+	</insert>
+	
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from BB_6_ARTICLECATEGORY
+		where 
+			ARTICLECATEGORY_ID = #{ARTICLECATEGORY_ID}
+	</delete>
+	
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update  BB_6_ARTICLECATEGORY
+			set 
+				ORDERS = #{ORDERS},	
+				GRADE = #{GRADE},	
+				NAME = #{NAME},	
+				SEO_DESCRIPTION = #{SEO_DESCRIPTION},	
+				SEO_KEYWORDS = #{SEO_KEYWORDS},	
+				SEO_TITLE = #{SEO_TITLE},	
+				TREE_PATH = #{TREE_PATH},	
+				PARENT = #{PARENT},
+				MODIFY_DATE=#{MODIFY_DATE},	
+			ARTICLECATEGORY_ID = ARTICLECATEGORY_ID
+			where 
+				ARTICLECATEGORY_ID = #{ARTICLECATEGORY_ID}
+	</update>
+	
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+			CREATE_DATE,	
+			MODIFY_DATE,	
+			ORDERS,	
+			GRADE,	
+			NAME,	
+			SEO_DESCRIPTION,	
+			SEO_KEYWORDS,	
+			SEO_TITLE,	
+			TREE_PATH,	
+			PARENT,	
+			ARTICLECATEGORY_ID
+		from 
+			BB_6_ARTICLECATEGORY
+		where 
+			ARTICLECATEGORY_ID = #{ARTICLECATEGORY_ID}
+	</select>
+	
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+				a.CREATE_DATE,	
+				a.MODIFY_DATE,	
+				a.ORDERS,	
+				a.GRADE,	
+				a.NAME,	
+				a.SEO_DESCRIPTION,	
+				a.SEO_KEYWORDS,	
+				a.SEO_TITLE,	
+				a.TREE_PATH,	
+				a.PARENT,	
+				a.ARTICLECATEGORY_ID
+		from 
+				BB_6_ARTICLECATEGORY a
+		order by a.ORDERS		
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+				a.CREATE_DATE,	
+				a.MODIFY_DATE,	
+				a.ORDERS,	
+				a.GRADE,	
+				a.NAME,	
+				a.SEO_DESCRIPTION,	
+				a.SEO_KEYWORDS,	
+				a.SEO_TITLE,	
+				a.TREE_PATH,	
+				a.PARENT,	
+				a.ARTICLECATEGORY_ID
+		from 
+				BB_6_ARTICLECATEGORY a
+					order by a.ORDERS	
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from BB_6_ARTICLECATEGORY
+		where 
+			ARTICLECATEGORY_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+</mapper>
